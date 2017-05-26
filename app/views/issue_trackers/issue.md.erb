@@ -32,10 +32,11 @@
 ~~~
 
 <% if notice.env_vars.present? %>
+<% html_entities = HTMLEntities.new %>
 ## Environment ##
 | Key        | Value      |
 |------------|------------|
-<% notice.env_vars.each do |key, val| %>| <%= key %> | <%= val %> |
+<% notice.env_vars.each do |key, val| %>| <%= raw html_entities.decode(key) %> | <%= raw html_entities.decode(val) %> |
 <% end %>
 <% end %>
 <% end %>
